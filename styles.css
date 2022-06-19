@@ -1,0 +1,48 @@
+:root {
+    --button-margin: 5px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.calculator {
+    border: 2px solid black;
+}
+
+.buttons {
+    display: flex;
+}
+
+.selections {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    width: 75%;
+}
+
+.selections button {
+    flex: 1 0 calc(33% - 10px);
+    margin: var(--button-margin);
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+}
+
+.operators button {
+    margin: var(--button-margin);
+}
+
+.display {
+    border: 3px solid salmon;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 3px;
+    text-align: right;
+}
