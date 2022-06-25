@@ -1,5 +1,5 @@
 function add(x, y) {
-    return x + y;
+    return +x + +y;
 }
 
 function subtract(x, y) {
@@ -18,11 +18,60 @@ function operate(operator, x, y) {
     return operator(x, y);
 }
 
-let currentSelection;
+function createOperation() {
+    if (currentNumber) {
+        previousNumber = currentNumber;
+    }
+    if (document.querySelector('.display').innerText) {
+        currentNumber = document.querySelector('.display').innerText;
+    }
+    if (currentOperator && previousNumber && currentNumber) {
+        document.querySelector('.display').innerText =
+            operate(window[currentOperator], previousNumber, currentNumber)
+        previousNumber = currentNumber;
+        currentNumber = document.querySelector('.display').innerText;
+    }
+}
+
+let currentNumber;
+let previousNumber;
+let currentOperator;
+let isOperating = false;
+
 const numberButtons = document.querySelectorAll('.number');
 numberButtons.forEach(button => {
     button.addEventListener('click', e => {
-        currentSelection = e.currentTarget.innerText;
-        document.querySelector('.display').innerText = currentSelection;
+        if (isOperating) {
+            document.querySelector('.display').innerText =
+                e.currentTarget.innerText;
+            isOperating = false;
+        }
+        else {
+            document.querySelector('.display').innerText +=
+                e.currentTarget.innerText;
+        }
     });
+});
+
+const operatorButtons = document.querySelectorAll('.operators button');
+operatorButtons.forEach(button => {
+    button.addEventListener('click', e => {
+        createOperation();
+        currentOperator = e.currentTarget.id;
+        isOperating = true;
+    });
+})
+
+const operateButton = document.querySelector('.operate');
+operateButton.addEventListener('click', e => {
+    createOperation();
+    currentOperator = undefined;
+});
+
+const clearbutton = document.querySelector('#clear');
+clearbutton.addEventListener('click', e => {
+    currentNumber = undefined;
+    previousNumber = undefined;
+    currentOperator = undefined;
+    document.querySelector('.display').innerText = '';
 });

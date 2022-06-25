@@ -45,4 +45,6 @@
     border-radius: 5px;
     padding: 3px;
     text-align: right;
+    line-height: 1em;
+    min-height: 1em;
 }
