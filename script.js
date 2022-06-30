@@ -56,16 +56,20 @@ numberButtons.forEach(button => {
 const operatorButtons = document.querySelectorAll('.operators button');
 operatorButtons.forEach(button => {
     button.addEventListener('click', e => {
-        createOperation();
+        if (!isOperating) {
+            createOperation();
+            isOperating = true;
+        }
         currentOperator = e.currentTarget.id;
-        isOperating = true;
     });
 })
 
 const operateButton = document.querySelector('.operate');
 operateButton.addEventListener('click', e => {
-    createOperation();
-    currentOperator = undefined;
+    if (!isOperating) {
+        createOperation();
+        currentOperator = undefined;
+    }
 });
 
 const clearbutton = document.querySelector('#clear');
