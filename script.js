@@ -72,10 +72,27 @@ operateButton.addEventListener('click', e => {
     }
 });
 
-const clearbutton = document.querySelector('#clear');
-clearbutton.addEventListener('click', e => {
+const clearButton = document.querySelector('#clear');
+clearButton.addEventListener('click', e => {
     currentNumber = undefined;
     previousNumber = undefined;
     currentOperator = undefined;
     document.querySelector('.display').innerText = '';
+});
+
+const decimalButton = document.querySelector('#decimal');
+decimalButton.addEventListener('click', e => {
+    if (document.querySelector('.display').innerText.includes('.') && 
+            !isOperating) {
+        return;
+    }
+    if (isOperating) {
+        document.querySelector('.display').innerText =
+            e.currentTarget.innerText;
+        isOperating = false;
+    }
+    else {
+        document.querySelector('.display').innerText +=
+            e.currentTarget.innerText;
+    }
 });

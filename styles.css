@@ -2,6 +2,15 @@
     --button-margin: 5px;
 }
 
+html {
+    background-color: #7e9a9a;
+}
+
+* {
+    font-family: 'Cousine', monospace;
+    font-size: 1.1em;
+}
+
 .main {
     display: flex;
     justify-content: center;
@@ -11,10 +20,13 @@
 
 .calculator {
     border: 2px solid black;
+    background-color: black;
+    border-radius: 5px;
 }
 
 .buttons {
     display: flex;
+    max-width: 20em;
 }
 
 .selections {
@@ -24,7 +36,7 @@
 }
 
 .selections button {
-    flex: 1 0 calc(33% - 10px);
+    flex: 1 0 calc(33% - 2*var(--button-margin));
     margin: var(--button-margin);
 }
 
@@ -37,14 +49,25 @@
 
 .operators button {
     margin: var(--button-margin);
+    background-color: #8ec3eb;
 }
 
 .display {
-    border: 3px solid salmon;
+    border: 3px solid #2a6592;
+    background-color: darkgray;
+    font-size: 2.5em;
     margin: 5px;
     border-radius: 5px;
     padding: 3px;
     text-align: right;
     line-height: 1em;
     min-height: 1em;
+}
+
+.number, #decimal {
+    background-color: #f6d8ac;
+}
+
+#clear {
+    background-color: #db9833;
 }
