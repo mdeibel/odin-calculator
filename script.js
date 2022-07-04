@@ -26,10 +26,12 @@ function createOperation() {
         currentNumber = document.querySelector('.display').innerText;
     }
     if (currentOperator && previousNumber && currentNumber) {
-        let num = operate(window[currentOperator], previousNumber, currentNumber);
-        document.querySelector('.display').innerText = num.toString().slice(0, 14);
+        let temp = operate(window[currentOperator],
+                previousNumber, currentNumber);
         previousNumber = currentNumber;
-        currentNumber = document.querySelector('.display').innerText;
+        currentNumber = temp;
+        document.querySelector('.display').innerText = currentNumber.
+                toString().slice(0, 14);
     }
 }
 
