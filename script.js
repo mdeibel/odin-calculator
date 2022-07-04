@@ -26,8 +26,8 @@ function createOperation() {
         currentNumber = document.querySelector('.display').innerText;
     }
     if (currentOperator && previousNumber && currentNumber) {
-        document.querySelector('.display').innerText =
-            operate(window[currentOperator], previousNumber, currentNumber)
+        let num = operate(window[currentOperator], previousNumber, currentNumber);
+        document.querySelector('.display').innerText = num.toString().slice(0, 14);
         previousNumber = currentNumber;
         currentNumber = document.querySelector('.display').innerText;
     }
@@ -46,7 +46,7 @@ numberButtons.forEach(button => {
                 e.currentTarget.innerText;
             isOperating = false;
         }
-        else {
+        else if (document.querySelector('.display').innerText.length < 14) {
             document.querySelector('.display').innerText +=
                 e.currentTarget.innerText;
         }
@@ -91,7 +91,7 @@ decimalButton.addEventListener('click', e => {
             e.currentTarget.innerText;
         isOperating = false;
     }
-    else {
+    else if (document.querySelector('.display').innerText.length < 14) {
         document.querySelector('.display').innerText +=
             e.currentTarget.innerText;
     }
